@@ -3,12 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ant : Enemy
-{
-    private Vector2 velocity;
+{ 
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+
+        Init(10);
+        Debug.Log(Health);
+
+    }
+
+    [SerializeField]private Vector2 velocity;
+
+    [SerializeField]private Transform[] movePoints;
+
+    private void FixedUpdate()
+    {
+        Behavior();
+    }
 
     public override void Behavior()
     {
-        Debug.Log("Ant Behavior");
+        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
+
+        if(rb.position.x <= movePoints[0].position.x && velocity.x < 0)
+        {
+            Flip();
+        }
+
+        else if (rb.position.x >= movePoints[1].position.x && velocity.x > 0)
+        {
+            Flip();
+}
+
+    }
+
+    private void Flip()
+    {
+        velocity *= -1;
+
+        Vector2 charScale = transform.localScale;
+        charScale.x *= -1;
+        transform.localScale = charScale;
+
     }
     
 }
