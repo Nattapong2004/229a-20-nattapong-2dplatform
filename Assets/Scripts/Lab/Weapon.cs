@@ -14,7 +14,7 @@ public abstract class Weapon : MonoBehaviour
         { damage = value; }
     }
 
-    protected string lShootable;
+    protected string owner;
 
     public abstract void OnHitWith(Character character);
 
