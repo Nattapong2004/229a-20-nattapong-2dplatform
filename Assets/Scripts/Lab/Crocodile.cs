@@ -11,8 +11,9 @@ public class Crocodile : Enemy,IShootable
         Init(100);
         Debug.Log("Crocodile : "+ Health);
 
-        bulletWaitTime = 1f;
-        bulletTimer = 0.1f;
+        bulletWaitTime = 1.0f;
+
+        bulletTimer = 1.0f;
     }
 
      public float attackRange;
@@ -58,7 +59,7 @@ public class Crocodile : Enemy,IShootable
 
     public void Shoot()
     {
-        if (Input.GetButtonDown("Fire1") && BulletWaitTime > BulletTimer ) 
+        if (bulletTimer < 0)
         {
             Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
         }

@@ -15,8 +15,8 @@ public class Player : Character,IShootable
     {
         Shoot();
     }
-    [SerializeField]
 
+    [SerializeField]
     GameObject bullet;
     public GameObject Bullet { get { return bullet; } set { bullet = value; } }
 
@@ -31,7 +31,7 @@ public class Player : Character,IShootable
 
     public void Shoot()
     {
-        if (bulletTimer < 0)
+         if (Input.GetButtonDown("Fire1") && BulletWaitTime > BulletTimer ) 
         {
             Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
         }
