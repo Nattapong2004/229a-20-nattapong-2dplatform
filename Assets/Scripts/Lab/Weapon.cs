@@ -17,6 +17,7 @@ public abstract class Weapon : MonoBehaviour
     protected string owner;
 
     public abstract void OnHitWith(Character character);
+    
 
     public abstract void Move();
 
