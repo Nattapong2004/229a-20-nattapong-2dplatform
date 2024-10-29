@@ -921,7 +921,7 @@ MonoBehaviour:
   player: {fileID: 1788856822}
   bullet: {fileID: 115806, guid: 40466c5ac40024bbca1e4b144cdf43c2, type: 3}
   bulletSpawnPoint: {fileID: 1154582560}
-  bulletWaitTime: 1
+  bulletWaitTime: 0
 --- !u!4 &481927235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 448308, guid: c07db661138134f589f46b8510d57c9a, type: 3}

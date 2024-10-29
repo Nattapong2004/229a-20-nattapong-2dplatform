@@ -10,6 +10,9 @@ public class Crocodile : Enemy,IShootable
     {
         Init(100);
         Debug.Log("Crocodile : "+ Health);
+
+        bulletWaitTime = 1f;
+        bulletTimer = 0.1f;
     }
 
      public float attackRange;
