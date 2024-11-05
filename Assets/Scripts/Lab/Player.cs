@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Character,IShootable
@@ -7,7 +8,7 @@ public class Player : Character,IShootable
     public void Start()
     {
         Init(100);
-        bulletWaitTime = 0.0f;
+        bulletWaitTime = 1.0f;
         bulletTimer = 1.0f;
     }
 
@@ -31,10 +32,23 @@ public class Player : Character,IShootable
 
     public void Shoot()
     {
-         if (Input.GetButtonDown("Fire1") && BulletWaitTime > BulletTimer ) 
+         if (Input.GetButtonDown("Fire1") && BulletWaitTime >= BulletTimer ) 
         {
-            Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+            GameObject ojb = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+            Banana banana = ojb.GetComponent<Banana>();
+            banana.Init(10,this);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null) { OnHitWith(enemy); }
+    }
+
+    public void OnHitWith(Enemy enemy)
+    {
+        takeDamage(enemy.DamageHit);
     }
 }
 
