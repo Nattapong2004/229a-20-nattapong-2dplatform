@@ -61,7 +61,12 @@ public class Crocodile : Enemy,IShootable
     {
         if (bulletTimer < 0)
         {
-            Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+           
+            GameObject Obj = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.identity);
+            Rock rockScipt = Obj.GetComponent<Rock>();
+            rockScipt.Init(20,this);
+
+            BulletWaitTime = 1;
         }
     }
 }

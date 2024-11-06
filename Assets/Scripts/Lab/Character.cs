@@ -30,13 +30,13 @@ public abstract class Character : MonoBehaviour
     {
         if (Health <= 0)
         {
-            Destroy(this.gameObject);
+            //Destroy(this.gameObject);
             return true;
 
         }
         else return false;
     }
-
+    
     public void takeDamage(int damage)
     {
         Health =-damage;
