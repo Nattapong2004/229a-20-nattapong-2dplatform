@@ -8,7 +8,10 @@ public class Ant : Enemy
     {
         rb = GetComponent<Rigidbody2D>();
 
-        Init(10);
+        damageHit = 20;
+
+        Init(100);
+
         Debug.Log(Health);
 
     }
@@ -47,5 +50,7 @@ public class Ant : Enemy
         transform.localScale = charScale;
 
     }
+
     
+
 }

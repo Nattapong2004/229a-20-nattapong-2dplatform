@@ -20,9 +20,15 @@ public abstract class Character : MonoBehaviour
     public void Init(int newHealth)
     {
         Health = newHealth;
-    }
 
-    public Animator anim;
+        healthBar.SetMaxHealth(newHealth);
+
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+    public HealthBar healthBar;
+
+    public Animator animator;
 
     public Rigidbody2D rb;
 
@@ -30,7 +36,7 @@ public abstract class Character : MonoBehaviour
     {
         if (Health <= 0)
         {
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
             return true;
 
         }
@@ -39,7 +45,10 @@ public abstract class Character : MonoBehaviour
     
     public void takeDamage(int damage)
     {
-        Health =-damage;
+        Health -= damage;
+
+        healthBar.UpdateHealthBar(Health);
+
         Debug.Log($"takeDamage: {damage} ,hp: {Health}");
         IsDead();
     }

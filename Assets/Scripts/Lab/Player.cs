@@ -44,6 +44,8 @@ public class Player : Character,IShootable
     {
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy != null) { OnHitWith(enemy); }
+
+        Debug.Log($"{this.name} hit with {enemy.name} draling {enemy.DamageHit} damage.");
     }
 
     public void OnHitWith(Enemy enemy)
